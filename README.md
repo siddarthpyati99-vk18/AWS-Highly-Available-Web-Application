@@ -18,41 +18,8 @@ Two Amazon EC2 web servers are deployed in separate Availability Zones and place
 
 
 
-\## 🏗️ Architecture
+## 🏗️ Architecture
 
+![AWS Highly Available Web Application Architecture](architecture-diagram.png)
 
-
-```text
-
-&#x20;                        Internet
-
-&#x20;                           │
-
-&#x20;                           ▼
-
-&#x20;               Application Load Balancer
-
-&#x20;                    cloud-engineer-alb
-
-&#x20;                           │
-
-&#x20;                    Target Group
-
-&#x20;                     /          \\
-
-&#x20;                    ▼            ▼
-
-&#x20;             EC2 Web Server 1  EC2 Web Server 2
-
-&#x20;                us-east-1a        us-east-1b
-
-&#x20;                    │                │
-
-&#x20;             public-subnet-1a  public-subnet-1b
-
-&#x20;                    │                │
-
-&#x20;                    └────── VPC ─────┘
-
-&#x20;                        10.0.0.0/16
-
+The application is deployed across two Availability Zones using Amazon EC2 and an Application Load Balancer. The ALB performs health checks and routes incoming traffic to healthy EC2 instances.
